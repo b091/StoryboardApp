@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="app.css">
     <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
-<body>
+<body ng-class="{loading:loadingView}">
 
 <div class="navbar navbar-fixed-top navbar-default">
     <div class="btn-group pull-right">
@@ -35,7 +35,7 @@
 <![endif]-->
 
 <div ng-view></div>
-
+<div class="modal"></div>
 <div>Angular seed app: v<span app-version></span></div>
 
 <script src="bower_components/jquery/dist/jquery.js"></script>
