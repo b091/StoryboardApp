@@ -1,31 +1,10 @@
 'use strict';
 
 angular.module('StoryboardApp.Storyboard')
-    .controller('StoryboardCtrl', function() {
+    .controller('StoryboardCtrl', ['StoryService', function(StoryService) {
         var ctrl = this;
 
-        ctrl.stories = [
-            {
-                id: 1,
-                title: 'First story',
-                description: 'Some description',
-                status: 'Todo',
-                type: 'Spike',
-                assignee: 1,
-                criteria: 'AC: adsd asd asdasd',
-                reporter: 2
-            },
-            {
-                id: 2,
-                title: 'Second one',
-                description: 'Some long description ......... .....',
-                status: 'In Progress',
-                type: 'Enchantment',
-                assignee: 1,
-                criteria: 'AC: adsd asd asdasd',
-                reporter: 2
-            }
-        ];
+        ctrl.stories = StoryService.getStories();
 
         ctrl.statuses = [
             {name: 'Todo'},
@@ -50,6 +29,8 @@ angular.module('StoryboardApp.Storyboard')
 
         ctrl.resetForm = function() {
             ctrl.editedStory = null;
+            ctrl.detailsForm.$setPristine();
+            ctrl.detailsForm.$setUntouched();
         };
 
         ctrl.updateStory = function() {
@@ -68,4 +49,4 @@ angular.module('StoryboardApp.Storyboard')
                 ctrl.resetForm();
             }
         };
-    });
+    }]);

@@ -29,7 +29,15 @@
         <div class="form-group">
             <div class="controls">
                 <label class="control-label" for="inputTitle">Tytuł*</label>
-                <input id="inputTitle" type="text" name="title" placeholder="Tytuł historyjki" class="form-control" ng-model="storyboard.editedStory.title"/>
+                <input id="inputTitle"
+                       type="text"
+                       name="title"
+                       placeholder="Tytuł historyjki"
+                       class="form-control"
+                       ng-model="storyboard.editedStory.title"
+                       ng-required="true"
+                       ng-minlength="5"
+                       ng-maxlength="10"/>
             </div>
         </div>
 
@@ -40,7 +48,8 @@
                         name="status"
                         class="form-control"
                         ng-model="storyboard.editedStory.status"
-                        ng-options="story.name as story.name for story in storyboard.statuses">
+                        ng-options="story.name as story.name for story in storyboard.statuses"
+                        ng-required="true">
                     <option value="">Wybierz status</option>
                 </select>
             </div>
@@ -52,7 +61,8 @@
                 <select id="inputType"
                         name="type"
                         class="form-control"
-                        ng-model="storyboard.editedStory.type">
+                        ng-model="storyboard.editedStory.type"
+                        ng-required="true">
                     <option value="">Wybierz typ</option>
                 </select>
             </div>
@@ -85,7 +95,7 @@
         <div class="form-group">
             <div class="controls">
                 <label class="control-label" for="inputReporter">Raportujący*</label>
-                <select id="inputReporter" name="type" class="form-control">
+                <select id="inputReporter" name="type" class="form-control" ng-required="true">
                     <option value="">Wybierz..</option>
                 </select>
             </div>
@@ -94,15 +104,23 @@
         <div class="form-group">
             <div class="controls">
                 <label class="control-label" for="inputAssignee">Wykonujący*</label>
-                <select id="inputAssignee" name="type" class="form-control">
+                <select id="inputAssignee" name="type" class="form-control" ng-required="true">
                     <option value="">Wybierz..</option>
                 </select>
             </div>
         </div>
         <div class="btn-group">
-            <button class="btn btn-sm" ng-show="!storyboard.editedStory.id" ng-click="storyboard.createStory()">Create</button>
-            <button class="btn btn-sm" ng-show="storyboard.editedStory.id"  ng-click="storyboard.updateStory()">Update</button>
-            <button class="btn btn-sm" ng-show="storyboard.editedStory"  ng-click="storyboard.resetForm()">Cancel</button>
+            <button class="btn btn-sm"
+                    ng-show="!storyboard.editedStory.id"
+                    ng-click="storyboard.createStory()">Create</button>
+            <button class="btn btn-sm"
+                    ng-show="storyboard.editedStory.id"
+                    ng-disabled="!storyboard.detailsForm.$valid"
+                    ng-click="storyboard.updateStory()">Update</button>
+            <button class="btn btn-sm"
+                    type="reset"
+                    ng-show="storyboard.editedStory"
+                    ng-click="storyboard.resetForm()">Cancel</button>
         </div>
     </form>
 </div>
