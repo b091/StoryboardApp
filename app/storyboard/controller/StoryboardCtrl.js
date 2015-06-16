@@ -6,16 +6,24 @@ angular.module('StoryboardApp.Storyboard')
 
         ctrl.stories = [
             {
+                id: 1,
                 title: 'First story',
                 description: 'Some description',
                 status: 'Todo',
-                type: 'Spike'
+                type: 'Spike',
+                assignee: 1,
+                criteria: 'AC: adsd asd asdasd',
+                reporter: 2
             },
             {
+                id: 2,
                 title: 'Second one',
                 description: 'Some long description ......... .....',
                 status: 'In Progress',
-                type: 'Enchantment'
+                type: 'Enchantment',
+                assignee: 1,
+                criteria: 'AC: adsd asd asdasd',
+                reporter: 2
             }
         ];
 
@@ -26,4 +34,15 @@ angular.module('StoryboardApp.Storyboard')
             {name: 'QA review'},
             {name: 'Verified'}
         ];
+
+        ctrl.selectedStory = null;
+        ctrl.editedStory = {};
+        ctrl.selectStory = function(story) {
+            ctrl.selectedStory = story;
+            ctrl.editedStory = angular.copy(ctrl.selectedStory);
+        };
+        ctrl.deleteStory = function(story) {
+            ctrl.stories.splice(ctrl.stories.indexOf(story), 1);
+            ctrl.editedStory = {};
+        };
     });

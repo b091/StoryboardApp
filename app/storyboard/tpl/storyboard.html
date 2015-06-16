@@ -5,16 +5,17 @@
             <h3 class="status">{{ status.name }}</h3>
             <hr/>
 
-            <li class="story" ng-repeat="story in storyboard.stories | filter: {status: status.name}">
+            <li class="story" ng-repeat="story in storyboard.stories | filter: {status: status.name}"  ng-click="storyboard.selectStory(story)">
                 <article>
                     <div>
-                        <button type="button" class="close">x</button>
+                        <button type="button" class="close" ng-click="storyboard.deleteStory(story)">x</button>
                         <p class="title">{{ story.title }}</p>
                     </div>
                     <div class="type-bar {{ story.type }}"></div>
                     <div>
                         <p>{{ story.description }}</p>
                     </div>
+
                 </article>
             </li>
         </ul>
@@ -28,14 +29,18 @@
         <div class="form-group">
             <div class="controls">
                 <label class="control-label" for="inputTitle">Tytuł*</label>
-                <input id="inputTitle" type="text" name="title" placeholder="Tytuł historyjki" class="form-control"/>
+                <input id="inputTitle" type="text" name="title" placeholder="Tytuł historyjki" class="form-control" ng-model="storyboard.editedStory.title"/>
             </div>
         </div>
 
         <div class="form-group">
             <div class="controls">
                 <label class="control-label" for="inputStatus">Status*</label>
-                <select id="inputStatus" name="status" class="form-control">
+                <select id="inputStatus"
+                        name="status"
+                        class="form-control"
+                        ng-model="storyboard.editedStory.status"
+                        ng-options="story.name as story.name for story in storyboard.statuses">
                     <option value="">Wybierz status</option>
                 </select>
             </div>
@@ -44,7 +49,10 @@
         <div class="form-group">
             <div class="controls">
                 <label class="control-label" for="inputType">Typ*</label>
-                <select id="inputType" name="type" class="form-control">
+                <select id="inputType"
+                        name="type"
+                        class="form-control"
+                        ng-model="storyboard.editedStory.type">
                     <option value="">Wybierz typ</option>
                 </select>
             </div>
@@ -53,17 +61,26 @@
         <div class="form-group">
             <div class="controls">
                 <label class="control-label" for="inputDescription">Opis</label>
-                <textarea id="inputDescription" name="description" placeholder="Opis" class="form-control"/>
+                <textarea id="inputDescription"
+                          name="description"
+                          placeholder="Opis"
+                          class="form-control"
+                          ng-model="storyboard.editedStory.description">
+                </textarea>
             </div>
         </div>
 
         <div class="form-group">
             <div class="controls">
                 <label class="control-label" for="inputAcceptanceCriteria">Kryteria akceptacji</label>
-                <textarea id="inputAcceptanceCriteria" name="acceptanceCriteria" placeholder="Kryteria akceptacji" class="form-control"/>
+                <textarea id="inputAcceptanceCriteria"
+                          name="acceptanceCriteria"
+                          placeholder="Kryteria akceptacji"
+                          class="form-control"
+                          ng-model="storyboard.editedStory.criteria">
+                </textarea>
             </div>
         </div>
-
 
         <div class="form-group">
             <div class="controls">
