@@ -1,8 +1,10 @@
 <div class="list-area">
     <div class="list-wrapper">
         <ul class="list" ng-repeat="status in storyboard.statuses">
+
             <h3 class="status">{{ status.name }}</h3>
             <hr/>
+
             <li class="story" ng-repeat="story in storyboard.stories | filter: {status: status.name}">
                 <article>
                     <div>
@@ -17,4 +19,68 @@
             </li>
         </ul>
     </div>
+</div>
+
+<div class="details">
+    <h3>Szczegóły karty</h3>
+    <form name="storyboard.detailsForm" novalidate>
+
+        <div class="form-group">
+            <div class="controls">
+                <label class="control-label" for="inputTitle">Tytuł*</label>
+                <input id="inputTitle" type="text" name="title" placeholder="Tytuł historyjki" class="form-control"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="controls">
+                <label class="control-label" for="inputStatus">Status*</label>
+                <select id="inputStatus" name="status" class="form-control">
+                    <option value="">Wybierz status</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="controls">
+                <label class="control-label" for="inputType">Typ*</label>
+                <select id="inputType" name="type" class="form-control">
+                    <option value="">Wybierz typ</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="controls">
+                <label class="control-label" for="inputDescription">Opis</label>
+                <textarea id="inputDescription" name="description" placeholder="Opis" class="form-control"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="controls">
+                <label class="control-label" for="inputAcceptanceCriteria">Kryteria akceptacji</label>
+                <textarea id="inputAcceptanceCriteria" name="acceptanceCriteria" placeholder="Kryteria akceptacji" class="form-control"/>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="controls">
+                <label class="control-label" for="inputReporter">Raportujący*</label>
+                <select id="inputReporter" name="type" class="form-control">
+                    <option value="">Wybierz..</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="controls">
+                <label class="control-label" for="inputAssignee">Wykonujący*</label>
+                <select id="inputAssignee" name="type" class="form-control">
+                    <option value="">Wybierz..</option>
+                </select>
+            </div>
+        </div>
+    </form>
 </div>
