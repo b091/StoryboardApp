@@ -99,5 +99,10 @@
                 </select>
             </div>
         </div>
+        <div class="btn-group">
+            <button class="btn btn-sm" ng-show="!storyboard.editedStory.id" ng-click="storyboard.createStory()">Create</button>
+            <button class="btn btn-sm" ng-show="storyboard.editedStory.id"  ng-click="storyboard.updateStory()">Update</button>
+            <button class="btn btn-sm" ng-show="storyboard.editedStory"  ng-click="storyboard.resetForm()">Cancel</button>
+        </div>
     </form>
 </div>

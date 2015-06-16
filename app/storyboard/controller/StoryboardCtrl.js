@@ -36,13 +36,36 @@ angular.module('StoryboardApp.Storyboard')
         ];
 
         ctrl.selectedStory = null;
-        ctrl.editedStory = {};
+        ctrl.editedStory = null;
+
         ctrl.selectStory = function(story) {
             ctrl.selectedStory = story;
-            ctrl.editedStory = angular.copy(ctrl.selectedStory);
+            ctrl.editedStory = angular.copy(story);
         };
+
         ctrl.deleteStory = function(story) {
             ctrl.stories.splice(ctrl.stories.indexOf(story), 1);
-            ctrl.editedStory = {};
+            ctrl.resetForm();
+        };
+
+        ctrl.resetForm = function() {
+            ctrl.editedStory = null;
+        };
+
+        ctrl.updateStory = function() {
+            for (var i = 0; ctrl.stories.length >= i; i++) {
+                if (ctrl.stories[i].id === ctrl.editedStory.id) {
+                    ctrl.stories[i] = ctrl.editedStory;
+                    break;
+                }
+            }
+            ctrl.resetForm();
+        };
+
+        ctrl.createStory = function() {
+            if (ctrl.editedStory) {
+                ctrl.stories.push(ctrl.editedStory);
+                ctrl.resetForm();
+            }
         };
     });
