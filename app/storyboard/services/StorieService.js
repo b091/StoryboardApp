@@ -4,6 +4,8 @@ angular.module('StoryboardApp.Common').service('StoryService', ['EndpointService
     var service = this,
         moduleName = 'stories';
 
+    service.model = [];
+
     service.create = function(storyId) {
         return service.handleResponse(
             $http.post(EndpointService.getUrlForId(moduleName, storyId), story),
@@ -41,7 +43,8 @@ angular.module('StoryboardApp.Common').service('StoryService', ['EndpointService
 
     service.handleResponse = function(promise, callerMethodName) {
         return promise.success(function(data) {
-            //return data;
+            service.model.length = 0;
+            Array.prototype.push.apply(service.model, data);
         }).error(function(reason) {
             console.log('StoryboardApp.Common.StoryService.' + callerMethodName, 'ERROR', reason);
         });
