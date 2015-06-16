@@ -1,18 +1,13 @@
 'use strict';
 
 angular.module('StoryboardApp.Storyboard')
-    .controller('StoryboardCtrl', ['StoryService', function(StoryService) {
+    .controller('StoryboardCtrl', ['StoryService', 'STORY_STATUSES', 'STORY_TYPES', function(StoryService, STORY_STATUSES, STORY_TYPES) {
         var ctrl = this;
 
         ctrl.stories = StoryService.getStories();
 
-        ctrl.statuses = [
-            {name: 'Todo'},
-            {name: 'In progress'},
-            {name: 'Code review'},
-            {name: 'QA review'},
-            {name: 'Verified'}
-        ];
+        ctrl.statuses = STORY_STATUSES;
+        ctrl.types = STORY_TYPES;
 
         ctrl.selectedStory = null;
         ctrl.editedStory = null;
