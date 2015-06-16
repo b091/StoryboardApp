@@ -4,7 +4,9 @@ angular.module('StoryboardApp.Storyboard')
     .controller('StoryboardCtrl', ['StoryService', 'STORY_STATUSES', 'STORY_TYPES', function(StoryService, STORY_STATUSES, STORY_TYPES) {
         var ctrl = this;
 
-        ctrl.stories = StoryService.getStories();
+        StoryService.getAll().then(function(response){
+            ctrl.stories = response.data;
+        });
 
         ctrl.statuses = STORY_STATUSES;
         ctrl.types = STORY_TYPES;

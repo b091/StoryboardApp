@@ -1,41 +1,50 @@
 'use strict';
 
-angular.module('StoryboardApp.Common').service('StoryService', function() {
-    var service = this;
-    service.stories = [
-        {
-            id: 1,
-            title: 'If you shine or fly with a shining chaos, surrender invents you.',
-            description: 'Protons walk from peaces like carnivorous ships. When the lotus of love develops peace of the doer, the reincarnation will know sinner.',
-            status: 'Todo',
-            type: 'Spike',
-            assignee: 1,
-            criteria: 'AC: adsd asd asdasd',
-            reporter: 2
-        },
-        {
-            id: 2,
-            title: 'Why does the ship tremble?',
-            description: 'Sun of a fine malaria, fire the adventure! Calm voyages lead to the peace. Jolly roger, yo-ho-ho.',
-            status: 'In Progress',
-            type: 'Bug',
-            assignee: 1,
-            criteria: 'AC: adsd asd asdasd',
-            reporter: 2
-        },
-        {
-            id: 3,
-            title: 'For an iced ripe platter, add some vinegar and corn syrup.',
-            description: 'Sun of a fine malaria, fire the adventure! Calm voyages lead to the peace. Jolly roger, yo-ho-ho.',
-            status: 'In Progress',
-            type: 'Enhancement',
-            assignee: 1,
-            criteria: 'AC: adsd asd asdasd',
-            reporter: 2
-        }
-    ];
+angular.module('StoryboardApp.Common').service('StoryService', ['EndpointService', '$http', function(EndpointService, $http) {
+    var service = this,
+        moduleName = 'stories';
 
-    service.getStories = function() {
-        return service.stories;
+    service.create = function(storyId) {
+        return service.handleResponse(
+            $http.post(EndpointService.getUrlForId(moduleName, storyId), story),
+            'create'
+        );
     };
-});
+
+    service.getAll = function() {
+        return service.handleResponse(
+            $http.get(EndpointService.getUrl(moduleName)),
+            'getAll'
+        );
+    };
+
+    service.getById = function(storyId) {
+        return service.handleResponse(
+            $http.get(EndpointService.getUrlForId(moduleName, storyId)),
+            'getById'
+        );
+    };
+
+    service.update = function(story) {
+        return service.handleResponse(
+            $http.put(EndpointService.getUrlForId(moduleName, story.id), story),
+            'update'
+        );
+    };
+
+    service.delete = function(storyId) {
+        return service.handleResponse(
+            $http.delete(EndpointService.getUrlForId(moduleName, storyId), story),
+            'delete'
+        );
+    };
+
+    service.handleResponse = function(promise, callerMethodName) {
+        return promise.success(function(data) {
+            //return data;
+        }).error(function(reason) {
+            console.log('StoryboardApp.Common.StoryService.' + callerMethodName, 'ERROR', reason);
+        });
+    };
+
+}]);
