@@ -12,6 +12,19 @@
                    ng-required="true"
                    ng-minlength="5"
                    ng-maxlength="10"/>
+
+            <div ng-messages="storyboard.detailsForm.title.$error">
+                <div ng-message="required">
+                    Pole jest wymagane
+                </div>
+                <div ng-message="minlength">
+                    Pole jest za krótkie
+                </div>
+                <div ng-message="maxlength">
+                    Pole jest za długie
+                </div>
+            </div>
+            
         </div>
     </div>
 
