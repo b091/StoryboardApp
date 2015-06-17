@@ -9,7 +9,8 @@
                 drag-container="story" mime-type="application/x-story-status"
                 drop-container="" accepts="['application/x-story-status']"
                 ng-repeat="story in storyboard.stories | filter: {status: status.name}"
-                ng-click="storyboard.selectStory(story)">
+                ng-click="storyboard.selectStory(story)"
+                active>
                 <div drop-target="top"
                      on-drag-enter="storyboard.insertStory(story, data, true)"
                      on-drop="soryboard.finalizeDrop(drop)" />
