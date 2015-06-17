@@ -277,3 +277,47 @@ form.ng-dirty input.ng-valid {
 .emptystatus {
     min-height: 100vh;
 }
+
+.fade-transition.ng-enter, .fade-transition.ng-leave {
+    transition: 0.75s linear all;
+}
+
+.fade-transition.ng-enter {
+    opacity: 0;
+}
+.fade-transition.ng-enter-active {
+    opacity: 1;
+}
+
+.fade-transition.ng-leave {
+    opacity: 1;
+}
+.fade-transition.ng-leave-active {
+    opacity: 0;
+}
+
+
+.rotation-animation.ng-enter {
+    animation-duration: 500ms;
+    animation-name: shake;
+    animation-direction: alternate;
+}
+
+@keyframes shake {
+    0% {
+        transform: rotate(10deg);
+    }
+    25% {
+        transform: rotate(-10deg);
+    }
+    50% {
+        transform: rotate(20deg);
+    }
+    75% {
+        transform: rotate(-20deg);
+    }
+    100% {
+        transform: rotate(0deg);
+
+    }
+}

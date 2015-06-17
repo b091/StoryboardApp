@@ -5,7 +5,10 @@
             <hr/>
             <li ng-repeat="story in storyboard.stories | filter: {status: status.name}"
                 ng-click="storyboard.selectStory(story)"
-                story="story" storyboard="storyboard" data="data">
+                story="story"
+                storyboard="storyboard"
+                data="data"
+                class="fade-transition rotation-animation">
             </li>
             <li class="emptystatus"
                 drop-container=""
@@ -16,7 +19,23 @@
     </div>
 </div>
 
-<div class="details">
-    <h3>Szczegóły karty</h3>
-    <div details-form storyboard="storyboard"></div>
+<div class="details" ng-class="{'details-visible' : storyboard.detailsVisible}">
+
+    <div class="details-nav">
+        <div>
+            <button class="btn pull-left btn-default"
+                    ng-click="detailsVisible = !detailsVisible">
+                <span class="glyphicon"
+                      ng-class="detailsVisible ? 'glyphicon-arrow-left' : 'glyphicon-arrow-right'">
+                </span>
+            </button>
+        </div>
+    </div>
+
+    <div class="fade-transition" ng-if="!detailsVisible">
+        <h3>Szczegóły karty</h3>
+
+        <div details-form storyboard="storyboard"></div>
+    </div>
+
 </div>

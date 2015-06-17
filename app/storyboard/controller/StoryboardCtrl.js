@@ -6,6 +6,7 @@ angular.module('StoryboardApp.Storyboard')
 
         StoryService.getAll();
         ctrl.stories = StoryService.model;
+        ctrl.detailsVisible = true;
 
         ctrl.statuses = STORY_STATUSES;
         ctrl.types = STORY_TYPES;
@@ -49,20 +50,20 @@ angular.module('StoryboardApp.Storyboard')
             console.log(story);
         };
 
-        ctrl.insertStory = function (targetStory, sourceStory, insertBefore) {
+        ctrl.insertStory = function(targetStory, sourceStory, insertBefore) {
             var sourceIdx, targetIdx;
-            if( targetStory === sourceStory ){
+            if (targetStory === sourceStory) {
                 return;
             }
             sourceIdx = ctrl.stories.indexOf(sourceStory);
             targetIdx = ctrl.stories.indexOf(targetStory);
 
-            if( !insertBefore ) {
+            if (!insertBefore) {
                 targetIdx++;
             }
-            if( sourceIdx >= 0 && targetIdx >=0 ){
+            if (sourceIdx >= 0 && targetIdx >= 0) {
                 ctrl.stories.splice(sourceIdx, 1);
-                if( targetIdx >= sourceIdx ) {
+                if (targetIdx >= sourceIdx) {
                     targetIdx--;
                 }
                 ctrl.stories.splice(targetIdx, 0, sourceStory);
