@@ -278,24 +278,14 @@ form.ng-dirty input.ng-valid {
     min-height: 100vh;
 }
 
-.fade-transition.ng-enter, .fade-transition.ng-leave {
+.fade-transition {
+    opacity: 1;
     transition: 0.75s linear all;
 }
 
-.fade-transition.ng-enter {
+.fade-transition.ng-hide {
     opacity: 0;
 }
-.fade-transition.ng-enter-active {
-    opacity: 1;
-}
-
-.fade-transition.ng-leave {
-    opacity: 1;
-}
-.fade-transition.ng-leave-active {
-    opacity: 0;
-}
-
 
 .rotation-animation.ng-enter {
     animation-duration: 500ms;
@@ -321,3 +311,4 @@ form.ng-dirty input.ng-valid {
 
     }
 }
+.show-details {  }

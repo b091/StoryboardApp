@@ -19,7 +19,8 @@
     </div>
 </div>
 
-<div class="details" ng-class="{'details-visible' : storyboard.detailsVisible}">
+<div class="details slide-animation"
+     ng-class="{'show-details' : detailsVisible}">
 
     <div class="details-nav">
         <div>
@@ -32,7 +33,7 @@
         </div>
     </div>
 
-    <div class="fade-transition" ng-if="!detailsVisible">
+    <div class="fade-transition" ng-show="!detailsVisible">
         <h3>Szczegóły karty</h3>
 
         <div details-form storyboard="storyboard"></div>

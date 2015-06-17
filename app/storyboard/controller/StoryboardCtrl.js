@@ -20,7 +20,8 @@ angular.module('StoryboardApp.Storyboard')
         };
 
         ctrl.deleteStory = function(story) {
-            ctrl.stories.splice(ctrl.stories.indexOf(story), 1);
+            var index = ctrl.stories.indexOf(story);
+            ctrl.stories.splice(index, 1);
             ctrl.resetForm();
         };
 
