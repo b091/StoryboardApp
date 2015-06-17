@@ -2,6 +2,7 @@
 
 angular.module('StoryboardApp', [
     'ngRoute',
+    'ngAnimate',
     'StoryboardApp.Storyboard',
     'StoryboardApp.Common'
 ]).
