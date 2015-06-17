@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('StoryboardApp.Common', [])
+angular.module('StoryboardApp.Common', ['filearts.dragDrop'])
 
     .constant('STORY_STATUSES', [
         {name: 'Todo'},

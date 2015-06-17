@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('StoryboardApp.Storyboard')
-    .directive('story', function($compile) {
+    .directive('story', function() {
         return {
             restrict: 'A',
             templateUrl: 'storyboard/tpl/story.html'
