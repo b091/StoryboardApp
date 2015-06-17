@@ -4,6 +4,11 @@ angular.module('StoryboardApp.Storyboard')
     .directive('story', function() {
         return {
             restrict: 'A',
-            templateUrl: 'storyboard/tpl/story.html'
+            templateUrl: 'storyboard/tpl/story.html',
+            scope: {
+                story: '=',
+                storyboard: '=',
+                data: '='
+            }
         }
     });

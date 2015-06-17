@@ -1,26 +1,24 @@
 <div class="list-area">
     <div class="list-wrapper">
         <ul class="list" ng-repeat="status in storyboard.statuses">
-
             <h3 class="status">{{ status.name }}</h3>
             <hr/>
-
             <li ng-repeat="story in storyboard.stories | filter: {status: status.name}"
                 ng-click="storyboard.selectStory(story)"
-                story>
+                story="story" storyboard="storyboard" data="data">
             </li>
             <li class="emptystatus"
                 drop-container=""
                 accepts="['application/x-story-status']"
                 on-drop="storyboard.finalizeDrop(data)"
                 on-drag-enter="storyboard.changeStoryStatus(data, status)"></li>
-
         </ul>
     </div>
 </div>
 
 <div class="details">
     <h3>Szczegóły karty</h3>
+
     <form name="storyboard.detailsForm" novalidate>
 
         <div class="form-group">
@@ -110,15 +108,18 @@
         <div class="btn-group">
             <button class="btn btn-sm"
                     ng-show="!storyboard.editedStory.id"
-                    ng-click="storyboard.createStory()">Create</button>
+                    ng-click="storyboard.createStory()">Create
+            </button>
             <button class="btn btn-sm"
                     ng-show="storyboard.editedStory.id"
                     ng-disabled="!storyboard.detailsForm.$valid"
-                    ng-click="storyboard.updateStory()">Update</button>
+                    ng-click="storyboard.updateStory()">Update
+            </button>
             <button class="btn btn-sm"
                     type="reset"
                     ng-show="storyboard.editedStory"
-                    ng-click="storyboard.resetForm()">Cancel</button>
+                    ng-click="storyboard.resetForm()">Cancel
+            </button>
         </div>
     </form>
 </div>
