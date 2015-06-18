@@ -2,13 +2,23 @@
 
 angular.module('myApp.view1', ['ngRoute'])
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/view1', {
-    templateUrl: 'view1/view1.html',
-    controller: 'View1Ctrl'
-  });
-}])
+    .config(['$routeProvider', function($routeProvider) {
+        $routeProvider.when('/view1', {
+            templateUrl: 'view1/view1.html',
+            controller: 'View1Ctrl'
+        });
+    }])
 
-.controller('View1Ctrl', [function() {
+    .controller('View1Ctrl', [function() {
+        var ctrl = this;
+        ctrl.minValue = 1;
+        ctrl.maxValue = 10;
 
-}]);
+        ctrl.setValue = function(newValue) {
+            ctrl.value = newValue;
+        };
+
+        ctrl.inRange = function() {
+            return ctrl.value >= ctrl.minValue && ctrl.value <= ctrl.maxValue;
+        };
+    }]);
