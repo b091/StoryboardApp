@@ -46,4 +46,19 @@ describe('myApp.view1 module', function() {
         });
 
     });
+
+    describe('view1 directive', function() {
+        var element;
+
+        beforeEach(inject(function($compile, $rootScope) {
+            element = $compile('<version></version>')($rootScope);
+            $rootScope.$digest();
+        }));
+
+        it('shows current app version', function() {
+            console.log(element.text);
+            expect(element.text()).toEqual('Wersja 12');
+        });
+
+    });
 });

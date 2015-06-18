@@ -27,8 +27,12 @@ angular.module('myApp.view1', ['ngRoute'])
         }
     }).directive('version', function() {
         return {
-            restrict : 'E',
-            replace:true,
-            template: '<span class="version"> Wersja {{version}}</span>'
+            restrict: 'E',
+            replace: true,
+            template: '<span class="version">Wersja {{version.number}}</span>',
+            controller: function() {
+                this.number = 12;
+            },
+            controllerAs: 'version'
         }
     });
