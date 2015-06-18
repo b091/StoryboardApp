@@ -2,10 +2,13 @@
 
 describe('myApp.view1 module', function() {
     var view1Ctrl;
+    var view1UCFilter;
+
 
     beforeEach(module('myApp.view1'));
-    beforeEach(inject(function($controller) {
+    beforeEach(inject(function($controller, $filter) {
         view1Ctrl = $controller('View1Ctrl');
+        view1UCFilter = $filter('firstLetterUpperCase');
     }));
 
     describe('view1 controller', function() {
@@ -18,7 +21,7 @@ describe('myApp.view1 module', function() {
             expect(view1Ctrl.inRange()).toBeTruthy();
         });
 
-        it('setValue sets balue of value', function() {
+        it('setValue sets value of value', function() {
             // given
             var value = 5;
 
@@ -27,6 +30,19 @@ describe('myApp.view1 module', function() {
 
             // then
             expect(view1Ctrl.value).toEqual(value);
+        });
+
+
+        it('filter should upercase first letter', function() {
+            // given
+            var sampleString = "ala ma kota";
+            var resultSampleString = "Ala ma kota";
+
+            // when
+            var processedSampleString = view1UCFilter(sampleString);
+
+            // then
+            expect(processedSampleString).toEqual(resultSampleString);
         });
 
     });

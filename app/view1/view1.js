@@ -21,4 +21,8 @@ angular.module('myApp.view1', ['ngRoute'])
         ctrl.inRange = function() {
             return ctrl.value >= ctrl.minValue && ctrl.value <= ctrl.maxValue;
         };
-    }]);
+    }]).filter('firstLetterUpperCase', function() {
+        return function(text) {
+            return text[0].toUpperCase() + text.slice(1);
+        }
+    });
