@@ -25,4 +25,10 @@ angular.module('myApp.view1', ['ngRoute'])
         return function(text) {
             return text[0].toUpperCase() + text.slice(1);
         }
+    }).directive('version', function() {
+        return {
+            restrict : 'E',
+            replace:true,
+            template: '<span class="version"> Wersja {{version}}</span>'
+        }
     });
