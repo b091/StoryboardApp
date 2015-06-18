@@ -7,12 +7,7 @@ angular.module('StoryboardApp.Users')
         ctrl.users = UserService.model;
         ctrl.editedUser = null;
 
-        ctrl.asdFunct = function() {
-        };
-
         ctrl.selectUser = function(user) {
-
             ctrl.editedUser = user;
         }
-
     }]);
