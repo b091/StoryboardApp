@@ -5,7 +5,8 @@ angular.module('StoryboardApp', [
     'ngAnimate',
     'ngMessages',
     'StoryboardApp.Storyboard',
-    'StoryboardApp.Common'
+    'StoryboardApp.Common',
+    'StoryboardApp.Users'
 ]).
     config(['$routeProvider', function($routeProvider) {
         $routeProvider.otherwise({redirectTo: 'storyboard'});
