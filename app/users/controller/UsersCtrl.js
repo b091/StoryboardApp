@@ -5,4 +5,14 @@ angular.module('StoryboardApp.Users')
         var ctrl = this;
 
         ctrl.users = UserService.model;
+        ctrl.editedUser = null;
+
+        ctrl.asdFunct = function() {
+        };
+
+        ctrl.selectUser = function(user) {
+
+            ctrl.editedUser = user;
+        }
+
     }]);

@@ -1,24 +1,45 @@
-<br/>
-<br/>
-<br/>
-<div class="container" style="color: #fff;">
-    <div class="list-area">
-        <div class="list-wrapper">
-            <ul class="list">
-                <li ng-repeat="user in users.users">
-                    <hr/>
-                    <article>
-                        <div class="photo pull-left">
-                            <span class="glyphicon glyphicon-user"></span>&nbsp;
-                        </div>
-                        <div>
-                            Name: {{user.firstName}}<br/>
-                            Surname: {{user.lastName}}<br/>
-                            email: {{user.email}}<br/>
-                        </div>
-                    </article>
-                </li>
-            </ul>
+<div class="list-area" style="color: #fff;">
+    <div class="list-wrapper">
+        <ul class="list">
+            <li ng-repeat="user in users.users">
+                <hr/>
+                <article>
+                    <div class="photo pull-left">
+                        <a href="#/users"><span class="glyphicon glyphicon-user"></span>&nbsp;</a>
+                    </div>
+                    <div>
+                        Name: {{user.firstName}}<br/>
+                        Surname: {{user.lastName}}<br/>
+                        email: {{user.email}}<br/>
+                    </div>
+                    <div ng-click="users.selectUser(user)"><a href="">Edit</a> </div>
+                </article>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<br style="clear: both;"/>
+
+
+<div class="details slide-animation"
+     ng-class="{'show-details' : detailsVisible}">
+
+    <div class="details-nav">
+        <div>
+            <button class="btn pull-left btn-default"
+                    ng-click="detailsVisible = !detailsVisible">
+                <span class="glyphicon"
+                      ng-class="detailsVisible ? 'glyphicon-arrow-left' : 'glyphicon-arrow-right'">
+                </span>
+            </button>
         </div>
     </div>
+
+    <div class="fade-transition" ng-show="!detailsVisible">
+        <h3>Szczegóły</h3>
+
+        <div users-form users="users"></div>
+    </div>
+
 </div>
